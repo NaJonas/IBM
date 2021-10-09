@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Picture objects</title>
 </head>
 <body>
+    <div id="app">
+        <h1>Picture objects</h1>
+        <ul v-for="picture in pictures">
+            <li>{{ picture.url }}</li>
+            <li v-for="object in picture.objects">{{ object.objectName }}</li>
+        </ul>
+
+    </div>
+    <div id="form">
+    <form v-on:submit.prevent="getObjects">
+        <label>Image url</label>
+        <input id="url" type="url" v-model="url">
+        <button v-on:click="getObjects(url)">Submit</button>
+    </form>
+    </div>
+    <script>
+        new Vue({
+            el: '#form',
+            data(){
+                return {
+                    url: '',
+                }
+            },
+            methods: {
+                getObjects: function (url){
+                    axios.post("/api/pictures/objects", {
+                        "url" : this.url,
+                    })
+                    .then(response => this.responseData = response.data())
+                }
+            }
+        })
+    </script>
+
+    <script>
+        const apiURL = "http://localhost:8080/api/pictures";
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    pictures: []
+                }
+            },
+            created(){
+                fetch(apiURL)
+                    .then(response => {
+                        return response.json();
+                        })
+                    .then(pictures => {
+                        this.pictures = pictures;
+                        })
+            }
+        });
+
+
+    </script>
+
 
 </body>
 </html>
