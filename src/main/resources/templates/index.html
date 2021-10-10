@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
     <meta charset="UTF-8">
     <title>Picture objects</title>
 </head>
 <body>
-    <div id="app">
-        <h1>Picture objects</h1>
-        <ul v-for="picture in pictures">
-            <li>{{ picture.url }}</li>
-            <li v-for="object in picture.objects">{{ object.objectName }}</li>
+    <div id="app" class="container-fluid">
+        <div class="row">
+            <div class="col">
+        <h1>Last five pictures</h1>
+        <ul class="list-group list-group-flush" v-for="picture in pictures">
+            <li class="list-group-item list-group-item-dark">{{ picture.url }}</li>
+            <li class="list-group-item" v-for="object in picture.objects">{{ object.objectName }}</li>
         </ul>
+            </div>
 
-    </div>
-    <div id="form">
+        <div class="col" align="center">
+            <h1>Upload image</h1>
     <form v-on:submit.prevent="getObjects">
         <label>Image url</label>
         <input id="url" type="url" v-model="url">
-        <button v-on:click="getObjects(url)">Submit</button>
+        <button class="btn-dark">Submit</button>
     </form>
+            <img class="img-fluid" src="" id="imageUrl">
+        </div>
+            <div class="col" align="center">
+                <h1>Picture objects</h1>
+        <ul class="list-group" v-if="objects" v-for="object in objects">
+            <li class="list-group-item h5"> {{ object }}</li>
+        </ul>
+            </div>
+        </div>
+
     </div>
     <script>
         new Vue({
@@ -29,14 +48,17 @@
             data(){
                 return {
                     url: '',
+                    objects: []
                 }
             },
             methods: {
-                getObjects: function (url){
+                getObjects: async function (){
                     axios.post("/api/pictures/objects", {
-                        "url" : this.url,
-                    })
-                    .then(response => this.responseData = response.data())
+                            url: this.url,
+                        })
+                            .then(response => {
+                                this.objects = response.data;
+                            })
                 }
             }
         })
@@ -48,18 +70,35 @@
             el: '#app',
             data() {
                 return {
-                    pictures: []
+                    pictures: [],
+                    url: '',
+                    objects: []
                 }
             },
             created(){
-                fetch(apiURL)
-                    .then(response => {
-                        return response.json();
+                this.fetchPictures();
+            },
+            methods: {
+                getObjects: function () {
+                        axios.post("/api/pictures/objects", {
+                            url: this.url,
                         })
-                    .then(pictures => {
-                        this.pictures = pictures;
+                            .then(response => {
+                                this.objects = response.data;
+                                this.fetchPictures();
+                            })
+                },
+                fetchPictures(){
+                    fetch(apiURL)
+                        .then(response => {
+                            return response.json();
                         })
+                        .then(pictures => {
+                            this.pictures = pictures;
+                        })
+                }
             }
+
         });
 
 

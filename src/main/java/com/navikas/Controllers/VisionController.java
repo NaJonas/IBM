@@ -4,7 +4,6 @@ import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
 import com.google.cloud.vision.v1.Feature;
 import com.google.cloud.vision.v1.LocalizedObjectAnnotation;
-import com.navikas.Entities.Object;
 import com.navikas.Entities.Picture;
 import com.navikas.Model.PictureService;
 import jdk.swing.interop.SwingInterOpUtils;
@@ -42,25 +41,15 @@ public class VisionController {
 
     @GetMapping()
     public List<Picture> pictureList() {
-        String url = "https://cdn.londonandpartners.com/asset/a8470577bb79a7460c342bf9a290b604.jpg";
-        Resource imageResource = this.resourceLoader.getResource("https://cdn.londonandpartners.com/asset/a8470577bb79a7460c342bf9a290b604.jpg");
-        AnnotateImageResponse response =
-                this.cloudVisionTemplate.analyzeImage(
-                        imageResource, Feature.Type.OBJECT_LOCALIZATION);
-        List<LocalizedObjectAnnotation> annotations = response.getLocalizedObjectAnnotationsList();
-        List<String> objects = new ArrayList<String>();
-        for (LocalizedObjectAnnotation element : annotations) {
-            objects.add(element.getName());
-        }
-
-        objects.forEach(System.out::println);
+        pictures = pictureService.getPictures();
 
         return pictures;
 
     }
     @PostMapping("objects")
-    public List<String> getObjects (@PathVariable String url){
-        Resource imageResource = this.resourceLoader.getResource(url);
+    public List<String> getObjects (@RequestBody Map<String, Object> url){
+        String url_ = (String)url.get("url");
+        Resource imageResource = this.resourceLoader.getResource(url_);
         AnnotateImageResponse response =
                 this.cloudVisionTemplate.analyzeImage(
                         imageResource, Feature.Type.OBJECT_LOCALIZATION);
@@ -69,7 +58,7 @@ public class VisionController {
         for (LocalizedObjectAnnotation element : annotations) {
             objects.add(element.getName());
         }
-        pictureService.savePicture(url, objects);
+        pictureService.savePicture(url_, objects);
 
         System.out.println("Post method");
         return objects;

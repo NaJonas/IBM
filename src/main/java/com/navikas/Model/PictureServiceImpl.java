@@ -27,14 +27,18 @@ public class PictureServiceImpl implements PictureService{
         pictureRepository.save(picture);
 
         // Iterate the objects from the api, create Object and save to the database
-        for (String object : stringObjects){
+        for (String object : stringObjects) {
             Object obj = new Object(object, picture);
             objectRepository.save(obj);
         }
+
     }
     @Override
     public List<Picture> getPictures(){
-        List<Picture> pictureList = pictureRepository.findFirstByOrderByIdDesc();
+        List<Picture> pictureList = pictureRepository.findFirst5ByOrderByIdDesc();
+        for (Picture picture : pictureList){
+            System.out.println(picture.getId());
+        }
         return pictureList;
     }
 }
