@@ -24,7 +24,7 @@ After I uploaded the app to Google Cloud and wanted to clean up css, it started 
  - As the app was supposed to show only the object names, I created an
    Entity table called Object with just id and objectName. Ideally, I
    think it would be better to store more information gathered from
-   Google Vision API and get the objectName attribute to display it.
+   Google Vision API and get the objectName attribute to display just the object names.
 	 
  - I wanted to show the image for preview at the website when the objects were retrieved, but somehow could not get it to work. Definitely an improvement to the application.
  - CSS should also be improved. I started getting cors errors at the very end after deploying to cloud, and decided to leave it as it was.
