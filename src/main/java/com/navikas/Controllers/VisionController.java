@@ -41,7 +41,7 @@ public class VisionController {
 
     @GetMapping()
     public List<Picture> pictureList() {
-        pictures = pictureService.getPictures();
+        pictures = pictureService.getPictures();    // Get 5 latest queries
 
         return pictures;
 
@@ -49,6 +49,8 @@ public class VisionController {
     @PostMapping("objects")
     public List<String> getObjects (@RequestBody Map<String, Object> url){
         String url_ = (String)url.get("url");
+
+        // Using Google Vision, get objects from the image url, and add them to a List of Strings
         Resource imageResource = this.resourceLoader.getResource(url_);
         AnnotateImageResponse response =
                 this.cloudVisionTemplate.analyzeImage(
@@ -58,9 +60,8 @@ public class VisionController {
         for (LocalizedObjectAnnotation element : annotations) {
             objects.add(element.getName());
         }
-        pictureService.savePicture(url_, objects);
+        pictureService.savePicture(url_, objects); // Save picture and its objects to the database
 
-        System.out.println("Post method");
         return objects;
     }
 

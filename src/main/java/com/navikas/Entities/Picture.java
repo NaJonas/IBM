@@ -6,6 +6,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.List;
 
+/*
+    Picture Entity class
+    Unique auto incremented id, a String value for image url
+    Has One to Many relationship with Object entity table
+
+ */
+
 @Entity
 public class Picture {
 

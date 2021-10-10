@@ -4,6 +4,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
+/*
+    Entity class for Picture objects.
+    Just has an auto incremented ID, and a String with object's name
+    Many to One relationship with Picture table
+
+ */
+
 @Entity
 public class Object {
     @Id

@@ -42,27 +42,6 @@
         </div>
 
     </div>
-    <script>
-        new Vue({
-            el: '#form',
-            data(){
-                return {
-                    url: '',
-                    objects: []
-                }
-            },
-            methods: {
-                getObjects: async function (){
-                    axios.post("/api/pictures/objects", {
-                            url: this.url,
-                        })
-                            .then(response => {
-                                this.objects = response.data;
-                            })
-                }
-            }
-        })
-    </script>
 
     <script>
         const apiURL = "http://localhost:8080/api/pictures";

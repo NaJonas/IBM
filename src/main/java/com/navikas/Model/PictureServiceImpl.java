@@ -35,10 +35,8 @@ public class PictureServiceImpl implements PictureService{
     }
     @Override
     public List<Picture> getPictures(){
+        // Get the last 5 queries
         List<Picture> pictureList = pictureRepository.findFirst5ByOrderByIdDesc();
-        for (Picture picture : pictureList){
-            System.out.println(picture.getId());
-        }
         return pictureList;
     }
 }

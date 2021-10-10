@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pure-oxygen-328214",
+  "private_key_id": "5b7e9fbaa00645c962e35710fac3764ed62fb69e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCod8s+ar89tyoT\nIf+BYZseA2kpVIi5GJa6jnJScEPBpMRiVb0t4dvgoEQbe/NFt3dn8OZpFnDxiMCJ\n9JWzTL5LDb3THtuBecCbrBSb9L3IBp5bKk8tggMOH5AhLYisVpsgYpdG9lJecLUx\n9+kDmL3p4JhvqPD1o8oXcpsx4OaYHfdMHTYBA2q0W+XNHk6DdkGYS7FCL2sStU4O\naWf/CVDfy6hrhUsNuBI8OjJdxIaIn+WBWrZoIrq5MxpH2jzCPr1O4G1rLo6NLrCa\nnnhwbl+JWPub5KA8CjfcxmrEidtcDCoWqDBBUfMXTPmyGlgCrEUj9l1ykhggOO0Z\nV9yhSicBAgMBAAECggEAA9ezqD6kEmLL+rgS+AmuEZRaAN9/ki/oOY9yi8R+xHsf\nIEUSCxVfQAjidM6yIPwgekZJjcpoFMJImKeeWy1xcQx6W3HqkidLnYwNGPTkopww\nCXv2EV9+oAMCn8HGSnQGlsmuPKf1VK0fx5N+2kj7b/W3qbhXQqsT5XlaO9wu4Peo\ndnGnQaEOmVXpz7+Xe8faEh6mtVaEearqzQA80R8Xzmv4dTP1WhSQ/uBUidKXC1gP\nkFwUm/pJGQBtVIb77JXoUb/Y4VvrxNmR8Aez7XG5dBxAvJMp95a2Kx2+3zhnDv5A\nQmHFbsvk6HJLGvDzQ3uuDC39jBInx4TrUGjUoygSyQKBgQDrMWzTNs50KftYRxa4\nMx0fDJqlNQOKHcqhmBXmK44wvVIx7si2LPstFdQQ0rrHf4YAi6gsiZWqW3WCIdAO\n/wiYkRI8qREcHiAlMt51yTutQX04vUl3oJ4LzMcK+FAbwlKEBaay0tJzPs2CVjZT\n52eZFu+NmZUY0Zw4vaoMjcp9BQKBgQC3XzNG+CoFSXgEsL8FMh79gIWbHA+Cu+DN\npJZirnn3tzEgqHMwUKsDrAmU27TatGziSlScEdTzQq2GZx7aHs41AzFiBCsgJ97F\nljjeHypvv02WX1KJ5QhByNOexNfT2uvBTU+6llD33eL1G1FFbHtpbXdRMWEJaOxP\nboVcFKICzQKBgQDMP2X0nzn3o6XFaicO3ETD/BwosLtcLLcWUo9iDh0zspY5Ctd/\nbdzLsJMz8O2H5vUmcCIiW3GAOmD4HAklnNGIPSQLTf+v3XGpHF4ZCCMtORxYM/oj\nS3c1ZCbPHgnjsYQbZxT3YyKkNrweHmSbxPAxALwUynWy0gXLONr+f/yDSQKBgQCu\nethYxBN/uluH4wGvmPRh9COs5nNfyxNpuR0bQrdtXJNTZtVL+MXwlYb8bF3W6Gze\nmSmO42zEFwLz6zUxCLTfPm2DvUGntChFy93KhM8lS1sxJPxtl09XARdTcCuJOzqu\nULj3asYaQ7gLz3VyYHnBZFZvHFQf1wVbw2cDqeJKVQKBgAINBIjEOS7LHj1DKLEC\nY7I0r9rJypg/uL3ldnqppdRZZVF4eM/4VhKiDrX1YzS9Zuotbgj8GsTGDaSCrzAf\nc1SeZ/seJqh+9SFbXfVccE7W5zijznXSfcTXNuluXlPTDvcyC2KwyG97wdCBb7lW\nuw/1c1EyN0Qekz9E3uNx5TDj\n-----END PRIVATE KEY-----\n",
+  "client_email": "najonas@pure-oxygen-328214.iam.gserviceaccount.com",
+  "client_id": "114841055100046090873",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/najonas%40pure-oxygen-328214.iam.gserviceaccount.com"
+}
